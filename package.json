@@ -1,0 +1,15 @@
+{
+  "name": "tv-proxy-server",
+  "version": "1.0.0",
+  "description": "my proxy server for tv app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Onyeka David",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "request": "^2.88.2"
+  }
+}
