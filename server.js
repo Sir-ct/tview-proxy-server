@@ -13,13 +13,14 @@ app.get('/exchangeinfo', (req, res) => {
     { url: 'https://api.binance.com/api/v3/exchangeinfo' },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: 'error', message: err.message });
+        return res.status(500).json({ type: 'error', message: error.message });
       }
 
       res.json(JSON.parse(body));
     }
   )
-});
+})
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
