@@ -13,7 +13,7 @@ app.get('/exchangeinfo', (req, res) => {
     { url: 'https://api.binance.com/api/v3/exchangeinfo' },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: 'error', message: error.message });
+        return res.status(500).json({ type: 'error'});
       }
 
       res.json(JSON.parse(body));
