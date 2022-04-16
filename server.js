@@ -1,26 +1,23 @@
-const express = require('express');
-const request = require('request');
+const express = require("express")
+const axios = require("axios")
+const cors = require("cors")
 
-const app = express();
+app = express()
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+app.use(cors({
+    origin: "*"
+}))
+let port = process.env.PORT || 3000
 
-app.get('/exchangeinfo', (req, res) => {
-  request(
-    { url: 'https://api.binance.com/api/v3/exchangeinfo' },
-    (error, response, body) => {
-      if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: 'error'});
-      }
-
-      res.json(JSON.parse(body));
-    }
-  )
+app.get("/", (req, res)=>{
+    axios.get("https://api.binance.com/api/v3/ticker/price").then(response => {
+        res.json(response.data)
+    }).catch(error => {
+        res.json(error)
+    })
 })
 
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`listening on ${PORT}`));
+app.listen(port, ()=>{
+    console.log("listening on port" + port)
+})
