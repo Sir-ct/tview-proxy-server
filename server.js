@@ -45,6 +45,15 @@ app.get("/gateio", (req, res)=>{
     })
 })
 
+app.get("/izuu", (req, res)=>{
+    axios.get("https://www.nimiq.com/oasis/?utm_source=twitter&utm_medium=organic&utm_campaign=nimiq-squad-campaign-2021&utm_term=Engr_Steel").then(response => {
+        res.json(response.data)
+        console.log(response.data)
+    }).catch(error => {
+        res.json(error)
+    })
+})
+
 app.listen(port, ()=>{
     console.log("listening on port" + port)
 })
