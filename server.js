@@ -54,6 +54,16 @@ app.get("/izuu", (req, res)=>{
     })
 })
 
+
+app.get("/buzz", (req, res)=>{
+    axios.get("https://buzzarena.net/627b71e3e56e85c492958358").then(response => {
+        res.json(response.data)
+        console.log(response.data)
+    }).catch(error => {
+        res.json(error)
+    })
+})
+
 app.listen(port, ()=>{
     console.log("listening on port" + port)
 })
